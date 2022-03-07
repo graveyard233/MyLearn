@@ -55,7 +55,7 @@
         android:textColorHint="@color/background_color"
 
         android:drawableLeft="@drawable/ic_baseline_edit_24"
-        android:drawablePadding="10dp"
+        android:drawablePadding="15dp"
         android:paddingLeft="15dp"
 
 

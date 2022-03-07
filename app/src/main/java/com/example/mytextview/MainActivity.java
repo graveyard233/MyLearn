@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String text = et.getText().toString();
-                
+                Log.e(TAG, "my password :" + text);
             }
         });
     }
