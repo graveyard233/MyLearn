@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,13 +37,30 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.page1_item:
                 Toast.makeText(this,"click page1",Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(this,MainActivity.class);
-                startActivity(intent1);
+//              Intent intent1 = new Intent(this,MainActivity.class);
+                Intent intent1 = new Intent("lyd.aaa");
+//              startActivity(intent1);
+                PackageManager packageManager = getPackageManager();
+                if (intent1.resolveActivity(packageManager) != null){
+                    Toast.makeText(this,"找到了activity",Toast.LENGTH_SHORT).show();
+                    startActivity(intent1);
+                } else {
+                    Toast.makeText(this,"没找到activity",Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.page2_item:
                 Toast.makeText(this,"click page2",Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(this,SecondActivity.class);
-                startActivity(intent2);
+//                Intent intent2 = new Intent(this,SecondActivity.class);
+                Intent intent2 = new Intent("com.example.activitytest.ACTION_START");
+                PackageManager packageManager2 = getPackageManager();
+                if (intent2.resolveActivity(packageManager2) != null){
+                    Toast.makeText(this,"找到了activity",Toast.LENGTH_SHORT).show();
+                    String data = "hello secondActivity";
+                    intent2.putExtra("extra_data",data);
+                    startActivity(intent2);
+                } else {
+                    Toast.makeText(this,"没找到activity",Toast.LENGTH_SHORT).show();
+                }
                 break;
             default:
         }
@@ -102,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void myclick(View view)
     {
+
         if (progressBar.getVisibility() == View.GONE)
         {
             progressBar.setVisibility(View.VISIBLE);

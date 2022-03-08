@@ -10,8 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTextView">
         <activity
+            android:name=".ThirdActivity"
+            android:exported="true">
+            <intent-filter xmlns:tools="http://schemas.android.com/tools"
+                tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+<!--                <category android:name="android.intent.category.BROWSABLE"/>-->
+                <data android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".SecondActivity"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.activitytest.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.activitytest.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
