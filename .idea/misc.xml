@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1765" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/drawable/btn_selector.xml" value="0.1765" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/drawable/ic_baseline_ac_unit_24.xml" value="0.1765" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1765" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1765" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1765" />
         <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/layout/activity_second.xml" value="0.2015625" />
+        <entry key="..\:/ForAndroid/MyLearn/app/src/main/res/menu/main.xml" value="0.33" />
         <entry key="..\:/For_Android/MyTextView/app/src/main/res/drawable/btn_selector.xml" value="0.403125" />
         <entry key="..\:/For_Android/MyTextView/app/src/main/res/layout/activity_main.xml" value="0.27717391304347827" />
       </map>

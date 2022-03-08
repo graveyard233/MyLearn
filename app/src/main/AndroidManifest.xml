@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTextView">
         <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Lyd&apos;s Learn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
