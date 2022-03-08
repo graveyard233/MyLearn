@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--android:background="@color/purple_500"-->
-
+<!-- centerInside 是不会缩放过小的图片 -->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -67,5 +67,17 @@
         android:text="获取密码"
 
         />
-    
+
+    <ImageView
+        android:src="@drawable/glass"
+        android:scaleType="fitCenter"
+        android:layout_width="200dp"
+        android:layout_height="150dp"/>
+    <ImageView
+        android:src="@drawable/glass_change_544x383"
+        android:maxHeight="200dp"
+        android:maxWidth="200dp"
+        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
