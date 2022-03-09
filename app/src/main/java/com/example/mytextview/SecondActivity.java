@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
-    private static final String TAG = "lyd";
+    private Button btn_secondpage;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,6 +42,20 @@ public class SecondActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case 1:
+                if (resultCode == RESULT_OK){
+                    String returnedData = data.getStringExtra("data_return");
+                    Log.d("SecondActivity", "onActivityResult: " + returnedData);
+                }
+                break;
+            default:
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +63,19 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Intent intent = getIntent();
         String data = intent.getStringExtra("extra_data");
-        Log.d("SecondActivity", data);
+        Log.d("SecondActivity", " THE DATA I SAND IS:" + data);
+
+        btn_secondpage = findViewById(R.id.btn_secondpage);
+        btn_secondpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(SecondActivity.this,ThirdActivity.class);
+                startActivityForResult(intent3,1);
+            }
+        });
 
 
     }
+
+
 }
