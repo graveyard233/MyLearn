@@ -1,6 +1,7 @@
 package com.example.mytextview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "my password :" + text);
             }
         });
+
     }
 
 

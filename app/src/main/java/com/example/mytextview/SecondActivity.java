@@ -1,6 +1,7 @@
 package com.example.mytextview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 
 import android.app.Notification;
@@ -112,6 +113,13 @@ public class SecondActivity extends AppCompatActivity {
                 .build();
 
 
+//        Toolbar toolbar = findViewById(R.id.tb);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.e(TAG, "onClick: toolbar被点击了");
+//            }
+//        });
     }
 
 
