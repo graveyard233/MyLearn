@@ -1,13 +1,16 @@
 package com.example.mytextview;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 
+import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,13 +22,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
     private Button btn_secondpage;
+    private Button btn_alertDialog;
     private ProgressBar progressBar2;
     private NotificationManager manager;
     private Notification notification;
@@ -112,6 +118,33 @@ public class SecondActivity extends AppCompatActivity {
                 .setAutoCancel(true)
                 .build();
 
+        btn_alertDialog = findViewById(R.id.btn_alertDialog);
+        btn_alertDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(SecondActivity.this);
+                dialog.setIcon(R.drawable.ic_baseline_ac_unit_24)
+                      .setTitle("this is dialog")
+                      .setMessage("something important")
+                      .setCancelable(false)
+                      .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                      .setNegativeButton("Cancel!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                      .setNeutralButton("好吧", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        })
+                      .show();
+            }
+        });
 
 //        Toolbar toolbar = findViewById(R.id.tb);
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -135,5 +168,34 @@ public class SecondActivity extends AppCompatActivity {
 
     public void cancelNotification(View view) {
         manager.cancel(1);
+    }
+
+    public void popupClick(View view) {
+        View popupView = getLayoutInflater().inflate(R.layout.popup_view, null);
+        Button btn1 = popupView.findViewById(R.id.btn_first);
+        Button btn2 = popupView.findViewById(R.id.btn_second);
+
+        PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,true);
+        popupWindow.setBackgroundDrawable(getResources().
+                getDrawable(R.drawable.ic_launcher_background));
+
+        popupWindow.showAsDropDown(view,view.getWidth(), - view.getHeight());
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("click", "onClick: 第一个");
+                popupWindow.dismiss();
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("click", "onClick: 第二个");
+                popupWindow.dismiss();
+            }
+        });
+
     }
 }
