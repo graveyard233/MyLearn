@@ -33,10 +33,18 @@ public class ThirdActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.putExtra("data_return",
-                        "hello,this message is from secondAcitvity");
+                        "hello,this message is from thirdActivity");
                 setResult(RESULT_OK,intent);
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){//重写方法，用户在按下back建后也能将数据传回上个activity
+        Intent intent = new Intent();
+        intent.putExtra("data_return","hello,this message is from thirdActivity");
+        setResult(RESULT_OK,intent);
+        finish();
     }
 }

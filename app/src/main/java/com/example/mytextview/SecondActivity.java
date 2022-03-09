@@ -1,20 +1,33 @@
 package com.example.mytextview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
     private Button btn_secondpage;
+    private ProgressBar progressBar2;
+    private NotificationManager manager;
+    private Notification notification;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,6 +74,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        progressBar2 = findViewById(R.id.pb2);
+
         Intent intent = getIntent();
         String data = intent.getStringExtra("extra_data");
         Log.d("SecondActivity", " THE DATA I SAND IS:" + data);
@@ -74,8 +90,42 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("lyd",
+                    "测试通知",NotificationManager.IMPORTANCE_HIGH);
+            manager.createNotificationChannel(channel);
+        }
+
+        Intent intent4 = new Intent(this,MainActivity.class);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, intent4, 0);
+        notification = new NotificationCompat.Builder(this,"lyd")
+                .setContentTitle("回到第一页")
+                .setContentText("文本内容显示区域")
+                .setSmallIcon(R.drawable.ic_baseline_ac_unit_24)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.glass))
+                .setColor(Color.parseColor("#3a89b0"))
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .build();
+
 
     }
 
 
+    public void load(View view) {
+        int progress = progressBar2.getProgress();
+        progress += 10;
+        progressBar2.setProgress(progress);
+    }
+
+    public void sendNotification(View view) {
+        manager.notify(1,notification);
+    }
+
+    public void cancelNotification(View view) {
+        manager.cancel(1);
+    }
 }
