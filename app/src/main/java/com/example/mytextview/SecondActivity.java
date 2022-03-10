@@ -10,6 +10,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,7 +29,7 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
 
     private Button btn_secondpage;
     private Button btn_alertDialog;
@@ -57,6 +58,11 @@ public class SecondActivity extends AppCompatActivity {
                 intent2.addCategory("com.example.activitytest.MY_CATEGORY");
                 startActivity(intent2);
                 break;
+            case R.id.page3_item:
+                Intent intent3 = new Intent(getApplicationContext(),ThirdActivity.class);
+
+                startActivity(intent3);
+
             default:
         }
         return true;
@@ -197,5 +203,16 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static void actionStart(Context context,String data1,String data2){
+        Intent intent = new Intent(context, ThirdActivity.class);
+        intent.putExtra("param1",data1);
+        intent.putExtra("param2",data2);
+        context.startActivity(intent);
+    }
+
+    public void sendMessagetoThird(View view) {
+        SecondActivity.actionStart(this,"haha","HAHA");
     }
 }

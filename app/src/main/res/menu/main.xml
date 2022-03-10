@@ -6,4 +6,7 @@
     <item
         android:id="@+id/page2_item"
         android:title="page2"/>
+    <item
+        android:id="@+id/page3_item"
+        android:title="page3"/>
 </menu>

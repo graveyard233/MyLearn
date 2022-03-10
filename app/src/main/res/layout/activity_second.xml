@@ -45,6 +45,7 @@
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:max="100"
+        android:onClick="sendMessagetoThird"
         android:indeterminate="true"
         android:layout_width="300dp"
         android:layout_height="wrap_content"/>
