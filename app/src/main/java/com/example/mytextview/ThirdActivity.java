@@ -43,7 +43,9 @@ public class ThirdActivity extends BaseActivity {
         });
 
         textView_changed = findViewById(R.id.text_changed);
-        textView_changed.setText(getIntent().getStringExtra("param2"));
+        String data = getIntent().getStringExtra("param2");
+        if (data != null)
+            textView_changed.setText(data);
     }
 
     @Override

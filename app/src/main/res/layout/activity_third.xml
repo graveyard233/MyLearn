@@ -9,12 +9,14 @@
     <Button
         android:id="@+id/btn_thirdpage"
         android:text="第三页的btn"
-        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btn_getMessage"
         android:text="获取来自第二页的信息"
-        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/text_changed"
@@ -22,7 +24,9 @@
         android:textColor="#eea5d1"
         android:textSize="25dp"
         android:onClick="clearAll"
-        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

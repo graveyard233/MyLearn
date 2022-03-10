@@ -24,10 +24,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondActivity extends BaseActivity {
 
@@ -36,6 +41,7 @@ public class SecondActivity extends BaseActivity {
     private ProgressBar progressBar2;
     private NotificationManager manager;
     private Notification notification;
+    private List<Fruit> fruitList = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,6 +87,9 @@ public class SecondActivity extends BaseActivity {
             default:
         }
     }
+
+//    private String[] data_listview = {"a1","a2","a3","a4","a5","a6","a7","a8","a9"
+//    };
 
 
     @Override
@@ -159,6 +168,30 @@ public class SecondActivity extends BaseActivity {
 //                Log.e(TAG, "onClick: toolbar被点击了");
 //            }
 //        });
+
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+//          SecondActivity.this, android.R.layout.simple_list_item_1,data_listview
+//        );
+
+        initFruits();//初始化数据
+        FruitAdapter adapter1 = new FruitAdapter(SecondActivity.this,
+                R.layout.fruit_item,fruitList);
+
+        ListView listView = (ListView) findViewById(R.id.listview);
+        listView.setAdapter(adapter1);
+    }
+
+    private void initFruits() {
+        for (int i = 0; i < 3; i++) {
+            Fruit a1 = new Fruit("apple",R.drawable.ic_baseline_ac_unit_24);
+            fruitList.add(a1);
+            Fruit a2 = new Fruit("banana",R.drawable.ic_baseline_access_time_24);
+            fruitList.add(a2);
+            Fruit a3 = new Fruit("orange",R.drawable.glass_change_544x383);
+            fruitList.add(a3);
+            Fruit a4 = new Fruit("Water",R.drawable.ic_launcher_foreground);
+            fruitList.add(a4);
+        }
     }
 
 
