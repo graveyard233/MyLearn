@@ -4,6 +4,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.app.Notification;
@@ -24,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -33,6 +37,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SecondActivity extends BaseActivity {
 
@@ -42,6 +47,7 @@ public class SecondActivity extends BaseActivity {
     private NotificationManager manager;
     private Notification notification;
     private List<Fruit> fruitList = new ArrayList<>();
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -179,6 +185,14 @@ public class SecondActivity extends BaseActivity {
 
         ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter1);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Fruit fruit = fruitList.get(i);
+                Toast.makeText(SecondActivity.this,fruit.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void initFruits() {
@@ -248,4 +262,6 @@ public class SecondActivity extends BaseActivity {
     public void sendMessagetoThird(View view) {
         SecondActivity.actionStart(this,"haha","HAHA");
     }
+
+
 }

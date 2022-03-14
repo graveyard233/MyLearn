@@ -29,19 +29,26 @@ public class FruitAdapter extends ArrayAdapter {
         Fruit fruit = (Fruit) getItem(position);//获取当前项的fruit实例
 
         View view;
+        ViewHolder viewHolder;
         if (convertView == null){
             view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
+            viewHolder = new ViewHolder();
+            viewHolder.fruitImage = view.findViewById(R.id.fruitImage);
+            viewHolder.fruitName = view.findViewById(R.id.fruitName);
+            view.setTag(viewHolder);
         } else {
             view = convertView;
+            viewHolder = (ViewHolder) view.getTag();
         }
 
-        ImageView fruitImage = (ImageView) view.findViewById(R.id.fruitImage);
-        TextView fruitName = (TextView) view.findViewById(R.id.fruitName);
-        if (fruit != null){
-            fruitImage.setImageResource(fruit.getImageId());
-            fruitName.setText(fruit.getName());
-        }
+        viewHolder.fruitImage.setImageResource(fruit.getImageId());
+        viewHolder.fruitName.setText(fruit.getName());
 
         return view;
+    }
+
+    class ViewHolder{
+        ImageView fruitImage;
+        TextView fruitName;
     }
 }
