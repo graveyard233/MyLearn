@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"没找到activity",Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.id.page4_item:
+                Intent intent4 = new Intent(this,FourthActivity.class);
+                startActivity(intent4);
             default:
         }
         return true;

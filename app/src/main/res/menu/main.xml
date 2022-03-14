@@ -9,4 +9,7 @@
     <item
         android:id="@+id/page3_item"
         android:title="page3"/>
+    <item
+        android:id="@+id/page4_item"
+        android:title="page4"/>
 </menu>
